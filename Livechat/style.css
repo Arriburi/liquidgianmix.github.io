@@ -144,6 +144,7 @@ a.usefuldata{
   padding-bottom: -20px;
   overflow:auto;
   max-height: 509px;
+  min-height: 509px;
 }
 .profile-image{
   width: 50px;
@@ -276,7 +277,8 @@ span{
   float: right;
 }
 
-.chat-bubble-me{
+.chat-bubble-me{ 
+  display: table;
   padding: 10px 14px;
   background: #67619e;
   margin: 10px 30px;
@@ -284,6 +286,7 @@ span{
   position: relative;
 }
 .chat-bubble-you{
+  display:table;
   padding: 10px 14px;
   background: #AEADCD;
   margin: 10px 30px;
@@ -307,6 +310,8 @@ span{
   border-top: 5px;
   border-bottom: 0px;
   border-right: 0px;
+  position: relative;
+
 
 }
 i{
@@ -322,6 +327,7 @@ i{
   border-top: 5px;
   overflow:auto;
   max-height: 509px;
+  min-height: 509px;
 
 }
 .chat-panel{
@@ -333,10 +339,19 @@ i{
   border-top: 5px;
 
 }
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+    color:#AEADC;
+}
 
-
-
-
+.fabutton {
+  background: none;
+  padding: 0px;
+  border: none;
+}
 
 
 

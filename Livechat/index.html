@@ -7,9 +7,48 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-
     <link rel = "icon" type = "image/png" href = "../Images/bonfire.png">
-  
+  	<script>
+  		/*
+		function messageReceived(){
+			window.alert("it works");
+		}
+  		window.alert("it works");
+  		      function sendMessage() {
+        if (xhttp == null) {
+          xhttp = new XMLHttpRequest(); // AJAX object
+          xhttp.onreadystatechange = messageReceived
+          xhttp.open("GET", "move.txt?board", true);
+          xhttp.send();
+        }
+      }
+*/	 	
+
+						  
+	  function sendMessage() {
+	  	let chatpanel = document.getElementById('chat-panel');
+	  	let input = document.getElementById('inputbox').value;
+	 	let message = input;
+	 	let chatbubble = document.createElement('chatbubble')
+		 chatbubble.innerHTML = 
+		"<div class='row no-gutters'>\n" +
+		"<div class='col-md-3'> \n"+
+		"<div class='chat-bubble-you'>\n"+
+		"<p class='chat-text'>\n"+
+		message +"</p>\n"+
+		"</div>\n"+
+		"</div>\n"+
+		"</div>";
+		if (message != "") {
+       	chatpanel.appendChild(chatbubble);
+		chatpanel.scrollTop = chatpanel.scrollHeight - chatpanel.clientHeight;
+		document.getElementById("inputbox").value = '';
+   		}
+   	}
+   	
+
+   		
+    </script>
   <title>Bonfire-Livechat</title>
 
 </head>
@@ -49,7 +88,7 @@
         <div class="search-box">
           <div class="input-wrapper">
             <i class="material-icons">search</i>
-            <input class="first" type="text" placeholder="Search">
+            <input class="first" style="color:#AEADCD" type="text" placeholder="Search">
           </div>
         </div>
         <div class="left-container">
@@ -121,10 +160,12 @@
 	        	<span>
 					  	<i class="material-icons">search</i>
 					  	<i class="material-icons">menu</i>
-						</span>
+				</span>
         </div>
-        <div class="chat-panel">
-        	<div class="chat-messages-panel">
+   
+        <div  class="chat-panel">
+ 
+        	<div id="chat-panel" class="chat-messages-panel">
 	        	<div class="row no-gutters">
 	        		<div class="col-md-3">
 	        			<div class="chat-bubble-you">
@@ -195,26 +236,12 @@
 	        			</div>
 	        		</div>
 	        	</div>
-	        	<div class="row no-gutters">
-	        		<div class="col-md-3">
-	        			<div class="chat-bubble-you">
-	        				<p class="chat-text">An illusion!<p>
-	        			</div>
-	        		</div>
-	        	</div>
-	        	<div class="row no-gutters">
-	        		<div class="col-md-3">
-	        			<div class="chat-bubble-you">
-	        				<p class="chat-text">An illusion!<p>
-	        			</div>
-	        		</div>
-	        	</div>
         	</div>
         	<div class="row">
         		<div class="col-12">
         			<div class="chat-box-tray">
 	        			<i class="material-icons face">sentiment_very_satisfied</i>
-	        			<input class="second" type="text" placeholder="Write a message..."/><i class="material-icons face">send</i>
+	        			<input  id= "inputbox" class="second" type="text" style="color:#AEADCD" placeholder="Write a message..."/> <button  onclick="sendMessage()" id="myBtn" type="submit" class="fabutton"> <i  class="material-icons face">send</i> </button>
         			</div>
         		</div>
         	</div>
@@ -228,4 +255,20 @@
 </footer>
 
 </body>
+<script>
+			let btn = document.getElementById('myBtn');
+		let textBox = document.getElementById('inputbox');
+
+
+		textBox.addEventListener('keyup',(e)=>{
+		  e.preventDefault();
+		   if(e.keyCode === 13){
+		       sendMessage(); // triggering click if `keycode === 13`
+		  }
+		})
+
+		function handleMe(){
+		  alert('You clicked me')
+		}
+</script>
 </html>
