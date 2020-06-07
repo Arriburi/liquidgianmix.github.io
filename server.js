@@ -7,12 +7,23 @@ function handleRequest(request, response) {
   var urlData = url.parse(request.url, true);
 
   var filename = "." + urlData.pathname;
-  console.log("Someone connected to me, and wants: " + filename);
-
+ 
   switch (filename) {
-    case "/index.txt":
+    case "../About/index.html":
       response.writeHead(200, {'Content-Type': 'text/html'});
-      console.log("Kek kok")
+      break;
+    case "../Contact/index.html":
+      response.writeHead(200, {'Content-Type': 'text/html'});
+      break;
+    case "../Homepage/index.html":
+      response.writeHead(200, {'Content-Type': 'text/html'});
+      break;
+    case "../Images/index.html":
+      response.writeHead(200, {'Content-Type': 'images/png'});
+      response.writeHead(200, {'Content-Type': 'images/gif'});
+      break;
+    case "../Livechat/index.html":
+      response.writeHead(200, {'Content-Type': 'text/html'});
       break;
 
     default:
@@ -28,8 +39,6 @@ function handleRequest(request, response) {
               response.writeHead(200, {'Content-Type': 'text/html'});
             else if (/.css$/.test(filename))
               response.writeHead(200, {'Content-Type': 'text/css'});
-            else if (/.png$/.test(filename))
-              response.writeHead(200, {'Content-Type': 'image/png'});
             else
               response.writeHead(200, {'Content-Type': 'text/plain'});
 
