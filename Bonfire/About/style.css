@@ -1,0 +1,119 @@
+
+body{
+background: rgb(255,133,77);
+background: linear-gradient(0deg, rgba(255,133,77,1) 0%, rgba(71,47,55,1) 1%, rgba(25,25,50,1) 20%);
+}
+::-webkit-scrollbar {
+    display: none;
+}
+header {
+  padding:200px;
+  margin-left: 55px;
+  text-align: center;
+  background-image:url(../Images/test1.gif);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #191932;
+
+}
+
+
+img.icon{
+  height: 100px;
+  display: inline;
+  margin-left: auto;
+  margin-right: auto;
+  
+
+}
+
+.bonfire{
+  padding-bottom: 30px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 60px;
+  color: #67619e;
+  text-align: center;
+  background-color: #191932;
+ 
+  
+  
+}
+.bonfire_text{
+  display: inline;
+
+}
+
+.menu{
+  padding top: 5px;
+  text-align: center;
+  line-height: 100px;
+  background-color: #111;
+
+}
+
+.menu li{
+  display: inline;
+  padding-right: 15px;
+  padding-left: 15px;
+  font-size: 30px;
+}
+.menu a{
+
+  margin-right: 60px;
+  font-size:  30px;
+  font-family: 'Press Start 2P', cursive;
+  text-decoration: none;
+  color: #67619e;
+  font-variant: small-caps;
+
+
+}
+.menu a:hover{
+
+  color: #FF854D;
+  transition: .3s;
+
+}
+article{
+padding-top: 30px;
+color: #AEADCD;
+padding-bottom: 500px;
+}
+p.content{
+padding-top: 10px;
+text-align: justify;
+text-indent: 50px;
+
+}
+
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #111;
+  color: #67619e;
+  text-align: left;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  padding: 5px 0px 5px 0px;
+  text-align: center;
+
+
+}
+.wrapper{
+  width: 840px;
+  margin: 0 auto;
+
+}
+
+a.usefuldata{
+ 
+  color: inherit;
+}
+
+ a.active_link{
+  color: #FF854D;
+
+}

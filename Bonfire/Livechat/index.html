@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+    <link rel = "icon" type = "image/png" href = "../Images/bonfire.png">
+  	<script>
+  		
+    var username=null;
+    let xhttp=null;
+
+   	function serverPlay() {
+        if (xhttp == null) {
+          let input = document.getElementById('inputbox').value;
+          let input1 = document.getElementById('mrID').textContent;
+          let message = input;
+          let username = input1;
+          xhttp = new XMLHttpRequest(); 
+          xhttp.onreadystatechange = sendMessage;
+          xhttp.open("GET", "message.txt?msg="+ message +"&nick="+ username, true);
+          xhttp.send();
+        }
+    }
+
+    async function sendMessage() {
+      if (xhttp.readyState == 4) {
+          if (xhttp.status == 200) {
+      xhttp = null;
+      let input = document.getElementById('inputbox').value;
+      let chatpanel = document.getElementById('chat-panel');
+      let message=input;
+      if (message != "") {
+      chatpanel.scrollTop = chatpanel.scrollHeight - chatpanel.clientHeight;
+      document.getElementById("inputbox").value = '';
+      }
+    }
+  }
+}
+
+   function chatReceived(){
+      if (xhttp.readyState == 4) {
+          if (xhttp.status == 200) {
+               let chatpanel = document.getElementById('chat-panel');
+               chatpanel.innerHTML = xhttp.responsetext;
+               xhttp = null;
+          }
+          else {
+            console.log("chat chatReceived error!");
+          }
+        }
+    }
+
+    function refreshChat(){
+    if (xhttp == null) {
+          let input = document.getElementById('inputbox').value;
+          let input1 = document.getElementById('mrID').textContent;
+          let message = input;
+          let username = input1;
+          xhttp = new XMLHttpRequest(); 
+          xhttp.onreadystatechange = chatReceived; 
+          xhttp.open("GET", "chathistory.txt?msg="+message+"&nick="+username, true);
+          xhttp.send();
+
+        }
+    }
+
+    setInterval(refreshChat, 2000);
+
+	 
+    </script>
+<title>Bonfire-Livechat</title>
+
+</head>
+
+<body>
+<header></header>
+<div class="bonfire">
+	<div>
+  	<img class="icon" src="../Images/bonfire.png"> </img> </div>
+  	<div class="bonfire_text">
+  		BONFIRE
+		</div>
+	</div>
+
+
+
+  <ul class="menu">
+  
+    <li><a href="../Homepage/index.html">home</a></li>
+    <li><a href="../About/index.html">about</a></li>
+    <li><a class="active_link" href="../Livechat/index.html">livechat</a></li>
+    <li><a href="../Contact/index.html">contact</a></li>
+   
+  </ul>
+
+  
+
+  <div id="container1"  class="container1">
+    <img id="profile-image1" class="profile-image1"  src="../Images/user.png"> 
+    <p class="name1">INSERT YOUR NICKNAME : </p>
+   <input id="nickname1"style="color:#AEADCD" class=nicknameinput1 type="text"  placeholder="Nickname" />
+    <p class="name1">CHANGE YOUR IMAGE : </p>
+   <input onchange="loadFile(event)" style="color:gray" id="inp" type="file" accept="image/*" >
+   <p style="color:#111"class="name1">Nothing to see here...</p>
+   <input onclick="submitUsername()" class="inp1"  type="submit" value="Submit">
+
+   <footer>
+  © Bonfire by Luca 
+  </footer>
+  </div>
+  
+
+<!------------------------------------------------------------------------->
+
+  <div id="container" hidden class="container">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <div id="settings-tray" class="settings-tray">
+          <img id="profile-image" class="profile-image" src="../Images/user.png" alt="profile image">
+            <div id="username" class="username">
+              
+            </div>
+          <span class="settings-tray--right float-right">     
+            <i class="material-icons">menu</i>
+          </span>
+        </div>
+        <div class="search-box">
+          <div class="input-wrapper">
+            <i class="material-icons">search</i>
+            <input class="first" style="color:#AEADCD" type="text" placeholder="Search">
+          </div>
+        </div>
+        <div class="left-container">
+        	<div class="friend-drawer">
+	        	<img src="../Images/user.png" alt="Friend photo" class="profile-image">
+	          <div class="text">
+	            <span class="time small">15:00</span>
+	            <h6>GuestFriend1</h6>
+	            <p>description1</p>
+	          </div>
+	        </div>
+	        <div class="friend-drawer">
+	          <img src="../Images/user.png" alt="Friend photo" class="profile-image">
+	          <div class="text">
+	          	<span class="time small">19:20</span>
+	          	<h6>GuestFriend2</h6>
+							<p>description2</p>
+	          </div>
+	        </div>
+	       </div>
+      </div>
+      <div class="col-md-8">
+				<div class="settings-tray--special">	
+        	<img class="profile-image" src="../Images/user.png" alt="Friend Image"> 
+        		<div class="text--special">
+        			<h6>GuestFriend1</h6>
+        			<p class="text-muted">Someone</p> 
+        		</div>
+	        	<span class="rightmaterials">
+					  	<i class="material-icons">search</i>
+					  	<i class="material-icons">menu</i>
+				</span>
+        </div>
+   
+        <div  class="chat-panel">
+ 
+        	<div id="chat-panel" class="chat-messages-panel">
+	        	
+
+        	</div>
+        	<div class="row">
+        		<div class="col-12">
+        			<div class="chat-box-tray">
+	        			<i class="material-icons face">sentiment_very_satisfied</i>
+	        			<input  id= "inputbox" class="second" type="text" style="color:#AEADCD" placeholder="Write a message..."/> <button  onclick="serverPlay()" id="myBtn" type="submit" class="fabutton"> <i  class="material-icons face">send</i> </button>
+        			</div>
+        		</div>
+        	</div>
+        </div>	
+  	</div>
+</div>
+
+
+<footer>
+  © Bonfire by Luca 
+</footer>
+
+</body>
+<script>
+	  let btn = document.getElementById('myBtn');
+		let textBox = document.getElementById('inputbox');
+
+
+		textBox.addEventListener('keyup',(e)=>{
+		  e.preventDefault();
+		   if(e.keyCode === 13){
+		       myBtn.click(); // triggering click if `keycode === 13`
+		  }
+		})
+
+    var loadFile = function(event) {
+    var output1 = document.getElementById('profile-image1');
+    var output = document.getElementById('profile-image');
+    output1.src = URL.createObjectURL(event.target.files[0]);
+    output.src = URL.createObjectURL(event.target.files[0]);
+       output.onload = function() {
+          URL.revokeObjectURL(output1.src) // free memory
+          URL.revokeObjectURL(output.src)
+      }
+
+    };
+
+
+     function submitUsername() {
+
+     let username = document.getElementById('nickname1').value;
+     let div = document.getElementById('username');
+     const you = document.createElement('h6');
+     you.setAttribute("id", "mrID");
+     
+
+     if(username !== undefined && username != ""){
+        you.textContent = username;
+        div.appendChild(you)
+
+        document.getElementById("container1").hidden = true;
+        document.getElementById("container").hidden = false;
+      }else{
+        you.textContent = "Guest" + getRandomInt();
+        div.appendChild(you)
+        document.getElementById("container1").hidden = true;
+        document.getElementById("container").hidden = false;
+    }
+  }
+
+    
+    function getRandomInt(min, max) {
+      min = Math.ceil(0);
+      max = Math.floor(9999);
+      return Math.floor(Math.random() * (max - min)) + min; 
+    }
+</script>
+</html>
